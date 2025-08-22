@@ -8,7 +8,7 @@ namespace Project
 
         [SerializeField] private GameObject _menuCanvas;
         [SerializeField] private GameObject _gameCanvas;
-        [SerializeField] private GameObject _victoryCanvas;
+        [SerializeField] private GameObject _scoreCanvas;
 
         private void Awake()
         {
@@ -33,20 +33,22 @@ namespace Project
 
         public void UpdateUI(GameManager.GameState gameState)
         {
+            Debug.Log("UpdateUI: " + gameState);
+
             switch (gameState)
             {
                 case GameManager.GameState.Menu:
                     _menuCanvas.SetActive(true);
                     _gameCanvas.SetActive(false);
-                    _victoryCanvas.SetActive(false);
+                    _scoreCanvas.SetActive(false);
                     break;
                 case GameManager.GameState.Playing:
                     _gameCanvas.SetActive(true);
                     _menuCanvas.SetActive(false);
-                    _victoryCanvas.SetActive(false);
+                    _scoreCanvas.SetActive(false);
                     break;
-                case GameManager.GameState.Victory:
-                    _victoryCanvas.SetActive(true);
+                case GameManager.GameState.Score:
+                    _scoreCanvas.SetActive(true);
                     _menuCanvas.SetActive(false);
                     _gameCanvas.SetActive(false);
                     break;
