@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66040c9e7a960d64a8d5709cf26f2fff, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: Assembly-CSharp::Project.PlayerData
-  maxHealth: 3
+  MaxHealth: 3
+  CurrentHealth: 0
