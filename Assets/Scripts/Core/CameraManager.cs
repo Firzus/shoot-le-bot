@@ -38,7 +38,7 @@ namespace Project
         {
             _camera = Camera.main.transform;
 
-            UpdateCameraPosition(CameraPosition.Left);
+            ResetCameraPosition();
         }
 
         public void UpdateCameraPosition(CameraPosition newPosition)
@@ -58,6 +58,11 @@ namespace Project
                     CurrentCameraPosition = CameraPosition.Right;
                     break;
             }
+        }
+
+        public void ResetCameraPosition()
+        {
+            CurrentCameraPosition = CameraPosition.Left;
         }
     }
 }

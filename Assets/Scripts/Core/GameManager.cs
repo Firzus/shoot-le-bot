@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -28,8 +29,12 @@ namespace Project
         public event Action<GameState> OnGameStateChanged;
 
         // Gameplay
-        private int _currentScore;
+        private int _currentScore = 0;
         private int _currentHealth;
+        private List<GameObject> _spawnFactoryList = new();
+
+        [SerializeField] private GameObject _spawnFactoryPrefab;
+        [SerializeField] private Transform[] _spawnPoints;
 
         // API
         public GameState CurrentGameState => _currentGameState;
@@ -79,11 +84,18 @@ namespace Project
 
         public void ChangeToGameState()
         {
+            ResetSpawnFactory();
             SetGameState(GameState.Playing);
-            Time.timeScale = 1f;
             _gameTime = 0f;
             ResetScore();
             ResetHealth();
+            CameraManager.Instance.ResetCameraPosition();
+
+            foreach (Transform spawnPoint in _spawnPoints)
+            {
+                var instance = Instantiate(_spawnFactoryPrefab, spawnPoint);
+                _spawnFactoryList.Add(instance);
+            }
         }
 
         public void ChangeToScoreState()
@@ -109,12 +121,6 @@ namespace Project
         public void AddScore(int points)
         {
             _currentScore += points;
-            OnScoreChanged?.Invoke(_currentScore);
-        }
-
-        public void SetScore(int score)
-        {
-            _currentScore = score;
             OnScoreChanged?.Invoke(_currentScore);
         }
 
@@ -153,8 +159,24 @@ namespace Project
 
             if (_currentHealth <= 0)
             {
+                ResetSpawnFactory();
                 ChangeToScoreState();
             }
+        }
+
+        public void ResetSpawnFactory()
+        {
+            foreach (var spawnFactory in _spawnFactoryList)
+            {
+                if (spawnFactory == null) { continue; }
+                var controller = spawnFactory.GetComponentInChildren<SpawnController>();
+                if (controller != null)
+                {
+                    controller.DespawnAllBots();
+                }
+                Destroy(spawnFactory);
+            }
+            _spawnFactoryList.Clear();
         }
     }
 }

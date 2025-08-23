@@ -150,5 +150,18 @@ namespace Project
 
             pool.Get();
         }
+
+        public void DespawnAllBots()
+        {
+            var bots = FindObjectsByType<BotController>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+            foreach (var bot in bots)
+            {
+                if (bot != null)
+                {
+                    Destroy(bot.gameObject);
+                }
+            }
+            _spawnAccumulator = 0f;
+        }
     }
 }

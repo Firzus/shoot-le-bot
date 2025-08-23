@@ -33,8 +33,6 @@ namespace Project
 
         public void UpdateUI(GameManager.GameState gameState)
         {
-            Debug.Log("UpdateUI: " + gameState);
-
             switch (gameState)
             {
                 case GameManager.GameState.Menu:

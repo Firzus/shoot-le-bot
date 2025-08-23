@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 7990855737689670300}
   - component: {fileID: 7925185500920078256}
   m_Layer: 0
-  m_Name: P_Spawn
+  m_Name: P_Factory
   m_TagString: Untagged
-  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 1213628208957885731}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -70,6 +70,11 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _timeMultiplier: 5
+  _timeMultiplier: 1
+  _rateMultiplier: 3
   _maxSpawnDurationSeconds: 30
-  _rateMultiplier: 1
+  _spawnStartDelaySeconds: 0
+  _rateJitter: 0.5
+  _noiseAmplitude: 0.6
+  _noiseFrequency: 0.5
+  _noiseSeed: 0
