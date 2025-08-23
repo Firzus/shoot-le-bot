@@ -42,7 +42,6 @@ namespace Project
         {
             if (other.CompareTag("TargetZone"))
             {
-                Debug.Log("Bot hit the target zone");
                 GameManager.Instance.PlayerTakeDamage(_botData.Damage);
                 Die();
             }

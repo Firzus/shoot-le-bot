@@ -46,35 +46,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Project.SpawnController
   _botPrefabs:
   - {fileID: 533906962746358515, guid: 0ebb3da139aa5e74ea6f34755ca20afe, type: 3}
-  _spawnCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  _rateConfig:
+    formula: 1
+    exponentialGrowth: 5
+    logisticSteepness: 6
+    logisticMidpoint: 0.5
   _timeMultiplier: 1
-  _rateMultiplier: 3
-  _maxSpawnDurationSeconds: 30
-  _spawnStartDelaySeconds: 0
-  _rateJitter: 0.5
-  _noiseAmplitude: 0.6
-  _noiseFrequency: 0.5
-  _noiseSeed: 0
+  _rateMultiplier: 4
+  _maxSpawnDurationSeconds: 60
+  _spawnStartDelaySeconds: 1

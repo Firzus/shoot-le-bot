@@ -62,7 +62,7 @@ namespace Project
 
         public void ResetCameraPosition()
         {
-            CurrentCameraPosition = CameraPosition.Left;
+            UpdateCameraPosition(CameraPosition.Left);
         }
     }
 }
