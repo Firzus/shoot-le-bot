@@ -55,6 +55,11 @@ namespace Project
             }
         }
 
+        public string GetKilledBotsMessage()
+        {
+            return $"Bravo, vous avez banni {GameManager.Instance.CurrentScore} bots !";
+        }
+
         private void OnDestroy()
         {
             GameManager.Instance.OnGameStateChanged -= UpdateUI;

@@ -3,7 +3,7 @@ using TMPro;
 
 namespace Project
 {
-    public class CanvasController : MonoBehaviour
+    public class GameCanvasController : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI _scoreText;
         [SerializeField] private TextMeshProUGUI _healthText;

@@ -35,6 +35,7 @@ namespace Project
         public GameState CurrentGameState => _currentGameState;
         public int PlayerDamage => _playerData.Damage;
         public float GameTime => _gameTime;
+        public int CurrentScore => _currentScore;
 
         private void Awake()
         {
@@ -97,6 +98,11 @@ namespace Project
 #else
             Application.Quit();
 #endif
+        }
+
+        public void OpenWebsite(string url)
+        {
+            Application.OpenURL(url);
         }
 
         public void AddScore(int points)
