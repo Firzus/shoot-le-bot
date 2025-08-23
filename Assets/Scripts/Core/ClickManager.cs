@@ -69,6 +69,7 @@ namespace Project
                 }
                 if (col.TryGetComponent<IClickable>(out var clickable))
                 {
+                    AudioManager.Instance.PlaySFX(GameManager.Instance.HitSound, transform);
                     clickable.OnClick(worldPos);
                     break; // click the top-most match only
                 }

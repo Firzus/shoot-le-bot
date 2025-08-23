@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: Assembly-CSharp::Project.PlayerData
   MaxHealth: 3
-  CurrentHealth: 0
+  Damage: 1
+  HitSound: {fileID: 8300000, guid: 90c5828689e7d4549818fa3ecbf2d0b7, type: 3}

@@ -36,6 +36,7 @@ namespace Project
         public int PlayerDamage => _playerData.Damage;
         public float GameTime => _gameTime;
         public int CurrentScore => _currentScore;
+        public AudioClip HitSound => _playerData.HitSound;
 
         private void Awake()
         {
