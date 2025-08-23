@@ -1,9 +1,13 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
+using System;
+using System.Collections.Generic;
+
 
 namespace Project
 {
+
+
     public enum SpawnRateFormula
     {
         Linear,
@@ -81,7 +85,7 @@ namespace Project
                 pool = new ObjectPool<BotController>(
                     createFunc: () =>
                     {
-                        GameObject go = Object.Instantiate(prefab);
+                        GameObject go = UnityEngine.Object.Instantiate(prefab);
                         BotController bot = go.GetComponent<BotController>();
                         if (bot == null)
                         {
@@ -106,7 +110,7 @@ namespace Project
                     {
                         if (bot != null)
                         {
-                            Object.Destroy(bot.gameObject);
+                            UnityEngine.Object.Destroy(bot.gameObject);
                         }
                     },
                     defaultCapacity: 10,
@@ -128,7 +132,7 @@ namespace Project
                 return;
             }
 
-            int index = Random.Range(0, _pools.Count);
+            int index = UnityEngine.Random.Range(0, _pools.Count);
             IObjectPool<BotController> pool = (index >= 0 && index < _pools.Count) ? _pools[index] : null;
             if (pool == null)
             {
@@ -140,12 +144,12 @@ namespace Project
 
         public void DespawnAllBots()
         {
-            var bots = Object.FindObjectsByType<BotController>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+            var bots = UnityEngine.Object.FindObjectsByType<BotController>(FindObjectsInactive.Include, FindObjectsSortMode.None);
             foreach (var bot in bots)
             {
                 if (bot != null)
                 {
-                    Object.Destroy(bot.gameObject);
+                    UnityEngine.Object.Destroy(bot.gameObject);
                 }
             }
         }

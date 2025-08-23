@@ -9,19 +9,11 @@ namespace Project
         [SerializeField] private TextMeshProUGUI _summaryText;
         [SerializeField] private Button _continueButton;
 
-        private void Start()
+        private void OnEnable()
         {
-            GameManager.Instance.OnGameStateChanged += OnGameStateChanged;
-
             _continueButton.onClick.AddListener(OnContinueButtonClicked);
-        }
 
-        private void OnGameStateChanged(GameManager.GameState gameState)
-        {
-            if (gameState == GameManager.GameState.Score)
-            {
-                _summaryText.text = UIManager.Instance.GetKilledBotsMessage();
-            }
+            _summaryText.text = $"Bravo, vous avez banni {GameManager.Instance.CurrentScore} bots !";
         }
 
         private void OnContinueButtonClicked()
@@ -29,9 +21,9 @@ namespace Project
             GameManager.Instance.ChangeToMenuState();
         }
 
-        private void OnDestroy()
+        private void OnDisable()
         {
-            GameManager.Instance.OnGameStateChanged -= OnGameStateChanged;
+            _continueButton.onClick.RemoveListener(OnContinueButtonClicked);
         }
     }
 }

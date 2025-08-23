@@ -10,8 +10,8 @@ namespace Project
 
         private void OnEnable()
         {
-            GameManager.Instance.OnScoreChanged += UpdateScoreText;
-            GameManager.Instance.OnHealthChanged += UpdateHealthText;
+            GameManager.OnScoreChanged += UpdateScoreText;
+            GameManager.OnHealthChanged += UpdateHealthText;
         }
 
         private void UpdateScoreText(int newScore)
@@ -26,8 +26,8 @@ namespace Project
 
         private void OnDisable()
         {
-            GameManager.Instance.OnScoreChanged -= UpdateScoreText;
-            GameManager.Instance.OnHealthChanged -= UpdateHealthText;
+            GameManager.OnScoreChanged -= UpdateScoreText;
+            GameManager.OnHealthChanged -= UpdateHealthText;
         }
     }
 }

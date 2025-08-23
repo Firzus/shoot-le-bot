@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Project
 {
@@ -24,17 +23,24 @@ namespace Project
         [SerializeField] private GameState _currentGameState;
 
         // Events
-        public event Action<int> OnScoreChanged;
-        public event Action<int> OnHealthChanged;
-        public event Action<GameState> OnGameStateChanged;
+        public static event Action<int> OnScoreChanged;
+        public static event Action<int> OnHealthChanged;
+        public static event Action<GameState> OnGameStateChanged;
 
         // Gameplay
         private int _currentScore = 0;
         private int _currentHealth;
-        private List<GameObject> _spawnFactoryList = new();
+        private readonly List<GameObject> _spawnFactoryList = new();
 
-        [SerializeField] private GameObject _spawnFactoryPrefab;
-        [SerializeField] private Transform[] _spawnPoints;
+        [Serializable]
+        public struct SpawnFactoryBinding
+        {
+            public Transform spawnPoint;
+            public GameObject factoryPrefab;
+        }
+
+        [Header("Spawn Factory Bindings")]
+        [SerializeField] private List<SpawnFactoryBinding> _spawnFactoryBindings = new();
 
         // API
         public GameState CurrentGameState => _currentGameState;
@@ -42,6 +48,7 @@ namespace Project
         public float GameTime => _gameTime;
         public int CurrentScore => _currentScore;
         public AudioClip HitSound => _playerData.HitSound;
+
 
         private void Awake()
         {
@@ -91,9 +98,10 @@ namespace Project
             ResetHealth();
             CameraManager.Instance.ResetCameraPosition();
 
-            foreach (Transform spawnPoint in _spawnPoints)
+            foreach (var binding in _spawnFactoryBindings)
             {
-                var instance = Instantiate(_spawnFactoryPrefab, spawnPoint);
+                if (binding.spawnPoint == null || binding.factoryPrefab == null) { continue; }
+                var instance = Instantiate(binding.factoryPrefab, binding.spawnPoint.position, Quaternion.identity);
                 _spawnFactoryList.Add(instance);
             }
         }

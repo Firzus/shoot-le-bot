@@ -208,7 +208,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &18176621
 Transform:
@@ -423,7 +423,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 0, y: 40}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 404, y: 80}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &120479653
 MonoBehaviour:
@@ -1254,9 +1254,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 120479652}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 364, y: -40}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &460077244
@@ -3788,7 +3788,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &965822645
 Transform:
@@ -4234,7 +4234,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1054847695
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4905,11 +4905,13 @@ MonoBehaviour:
   _gameTime: 0
   _playerData: {fileID: 11400000, guid: a69e13e9c4d9c4948bc145f8fd79d290, type: 2}
   _currentGameState: 0
-  _spawnFactoryPrefab: {fileID: 1213628208957885731, guid: 050e159525e47cd4ea86322f36e58189, type: 3}
-  _spawnPoints:
-  - {fileID: 965822645}
-  - {fileID: 18176621}
-  - {fileID: 2025824804}
+  _spawnFactoryBindings:
+  - spawnPoint: {fileID: 965822645}
+    factoryPrefab: {fileID: 4791768551204648412, guid: 99341f59a4dcc394c8d6a417e8b6decd, type: 3}
+  - spawnPoint: {fileID: 18176621}
+    factoryPrefab: {fileID: 4791768551204648412, guid: 94ccadaeab0baf34a89a13cac3bfe388, type: 3}
+  - spawnPoint: {fileID: 7990855737689670300, guid: 050e159525e47cd4ea86322f36e58189, type: 3}
+    factoryPrefab: {fileID: 4791768551204648412, guid: 3e39742eeffb60642b382c500246a608, type: 3}
 --- !u!1 &1246736916
 GameObject:
   m_ObjectHideFlags: 0
@@ -6610,7 +6612,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2025824804
 Transform:
@@ -6763,9 +6765,9 @@ RectTransform:
   - {fileID: 328284744}
   m_Father: {fileID: 120479652}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 150, y: -40}
   m_SizeDelta: {x: 300, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2101456754
@@ -6865,7 +6867,7 @@ GameObject:
   m_TagString: TargetZone
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3907971445739381415
 Transform:

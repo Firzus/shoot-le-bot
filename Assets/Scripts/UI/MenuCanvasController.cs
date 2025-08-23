@@ -41,5 +41,12 @@ namespace Project
             AudioManager.Instance.ToggleMasterVolume();
             _volumeImage.sprite = _volumeImage.sprite == _volumeOnSprite ? _volumeOffSprite : _volumeOnSprite;
         }
+
+        private void OnDestroy()
+        {
+            _startButton.onClick.RemoveListener(OnStartButtonClicked);
+            _quitButton.onClick.RemoveListener(OnQuitButtonClicked);
+            _volumeButton.onClick.RemoveListener(OnVolumeButtonClicked);
+        }
     }
 }

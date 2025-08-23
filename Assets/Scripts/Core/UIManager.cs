@@ -26,7 +26,7 @@ namespace Project
 
         private void Start()
         {
-            GameManager.Instance.OnGameStateChanged += UpdateUI;
+            GameManager.OnGameStateChanged += UpdateUI;
 
             UpdateUI(GameManager.GameState.Menu);
         }
@@ -55,12 +55,14 @@ namespace Project
 
         public string GetKilledBotsMessage()
         {
+            Debug.Log($" {GameManager.Instance.CurrentScore} bots !");
+
             return $"Bravo, vous avez banni {GameManager.Instance.CurrentScore} bots !";
         }
 
         private void OnDestroy()
         {
-            GameManager.Instance.OnGameStateChanged -= UpdateUI;
+            GameManager.OnGameStateChanged -= UpdateUI;
         }
     }
 }
