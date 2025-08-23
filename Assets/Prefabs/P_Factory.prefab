@@ -51,6 +51,8 @@ MonoBehaviour:
     exponentialGrowth: 5
     logisticSteepness: 6
     logisticMidpoint: 0.5
+    minNormalizedRate: 0.3
+    curvature: 0.8
   _timeMultiplier: 1
   _rateMultiplier: 4
   _maxSpawnDurationSeconds: 60

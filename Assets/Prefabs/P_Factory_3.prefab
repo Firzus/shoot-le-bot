@@ -13,12 +13,20 @@ PrefabInstance:
       value: P_Factory_3
       objectReference: {fileID: 0}
     - target: {fileID: 7925185500920078256, guid: 050e159525e47cd4ea86322f36e58189, type: 3}
+      propertyPath: _rateMultiplier
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7925185500920078256, guid: 050e159525e47cd4ea86322f36e58189, type: 3}
       propertyPath: _spawnStartDelaySeconds
       value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 7925185500920078256, guid: 050e159525e47cd4ea86322f36e58189, type: 3}
       propertyPath: _maxSpawnDurationSeconds
       value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 7925185500920078256, guid: 050e159525e47cd4ea86322f36e58189, type: 3}
+      propertyPath: _rateConfig.exponentialGrowth
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7990855737689670300, guid: 050e159525e47cd4ea86322f36e58189, type: 3}
       propertyPath: m_LocalPosition.x

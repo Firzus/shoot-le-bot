@@ -48,6 +48,7 @@ namespace Project
         public float GameTime => _gameTime;
         public int CurrentScore => _currentScore;
         public AudioClip HitSound => _playerData.HitSound;
+        public Sprite HitEffect => _playerData.HitEffect;
 
 
         private void Awake()

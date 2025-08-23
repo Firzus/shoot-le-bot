@@ -10,7 +10,35 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1213628208957885731, guid: 050e159525e47cd4ea86322f36e58189, type: 3}
       propertyPath: m_Name
-      value: P_Factory
+      value: P_Factory_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7925185500920078256, guid: 050e159525e47cd4ea86322f36e58189, type: 3}
+      propertyPath: _rateMultiplier
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7925185500920078256, guid: 050e159525e47cd4ea86322f36e58189, type: 3}
+      propertyPath: _timeMultiplier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7925185500920078256, guid: 050e159525e47cd4ea86322f36e58189, type: 3}
+      propertyPath: _rateConfig.formula
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7925185500920078256, guid: 050e159525e47cd4ea86322f36e58189, type: 3}
+      propertyPath: _spawnStartDelaySeconds
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7925185500920078256, guid: 050e159525e47cd4ea86322f36e58189, type: 3}
+      propertyPath: _maxSpawnDurationSeconds
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 7925185500920078256, guid: 050e159525e47cd4ea86322f36e58189, type: 3}
+      propertyPath: _rateConfig.logisticMidpoint
+      value: 0.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 7925185500920078256, guid: 050e159525e47cd4ea86322f36e58189, type: 3}
+      propertyPath: _rateConfig.exponentialGrowth
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7990855737689670300, guid: 050e159525e47cd4ea86322f36e58189, type: 3}
       propertyPath: m_LocalPosition.x

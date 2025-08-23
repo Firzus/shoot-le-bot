@@ -3,11 +3,8 @@ using UnityEngine.Pool;
 using System;
 using System.Collections.Generic;
 
-
 namespace Project
 {
-
-
     public enum SpawnRateFormula
     {
         Linear,
@@ -22,6 +19,8 @@ namespace Project
         [Min(1.0001f)] public float exponentialGrowth = 4f;
         [Range(0.1f, 20f)] public float logisticSteepness = 6f;
         [Range(0f, 1f)] public float logisticMidpoint = 0.5f;
+        [Range(0f, 1f)] public float minNormalizedRate = 0.15f; // ensures non-zero start rate
+        [Range(0.25f, 4f)] public float curvature = 0.8f; // <1 boosts early growth, >1 slows it
     }
 
     public static class SpawnRateUtility
@@ -31,12 +30,15 @@ namespace Project
             float t = Mathf.Clamp01(normalizedTime);
             SpawnRateFormula formula = config != null ? config.formula : SpawnRateFormula.Linear;
 
+            float baseRate;
+
             switch (formula)
             {
                 case SpawnRateFormula.Exponential:
                     {
                         float g = config != null ? Mathf.Max(1.0001f, config.exponentialGrowth) : 4f;
-                        return (Mathf.Pow(g, t) - 1f) / (g - 1f);
+                        baseRate = (Mathf.Pow(g, t) - 1f) / (g - 1f);
+                        break;
                     }
                 case SpawnRateFormula.Logistic:
                     {
@@ -45,12 +47,25 @@ namespace Project
                         float f = 1f / (1f + Mathf.Exp(-steep * (t - mid)));
                         float f0 = 1f / (1f + Mathf.Exp(-steep * (0f - mid)));
                         float f1 = 1f / (1f + Mathf.Exp(-steep * (1f - mid)));
-                        return (f - f0) / Mathf.Max(1e-5f, (f1 - f0));
+                        baseRate = (f - f0) / Mathf.Max(1e-5f, (f1 - f0));
+                        break;
                     }
                 case SpawnRateFormula.Linear:
                 default:
-                    return t;
+                    baseRate = t;
+                    break;
             }
+
+            // Apply curvature to bias early or late growth
+            float curvature = config != null ? Mathf.Clamp(config.curvature, 0.25f, 4f) : 1f;
+            if (!Mathf.Approximately(curvature, 1f))
+            {
+                baseRate = Mathf.Pow(Mathf.Clamp01(baseRate), curvature);
+            }
+
+            // Apply a minimum normalized rate so spawning starts immediately
+            float min = config != null ? Mathf.Clamp01(config.minNormalizedRate) : 0f;
+            return Mathf.Lerp(min, 1f, Mathf.Clamp01(baseRate));
         }
     }
 

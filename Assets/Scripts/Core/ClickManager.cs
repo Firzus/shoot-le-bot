@@ -71,6 +71,7 @@ namespace Project
                 {
                     AudioManager.Instance.PlaySFX(GameManager.Instance.HitSound, transform);
                     clickable.OnClick(worldPos);
+                    UIManager.Instance.ShowHitEffect(worldPos);
                     break; // click the top-most match only
                 }
             }

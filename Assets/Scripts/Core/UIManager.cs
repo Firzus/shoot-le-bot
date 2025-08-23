@@ -53,11 +53,47 @@ namespace Project
             }
         }
 
-        public string GetKilledBotsMessage()
+        public void ShowHitEffect(Vector2 worldPosition)
         {
-            Debug.Log($" {GameManager.Instance.CurrentScore} bots !");
+            var gameCanvas = _gameCanvas.GetComponent<Canvas>();
+            var effectSprite = GameManager.Instance.HitEffect;
 
-            return $"Bravo, vous avez banni {GameManager.Instance.CurrentScore} bots !";
+            var go = new GameObject("HitEffect");
+            go.transform.SetParent(_gameCanvas.transform, false);
+            go.transform.SetAsLastSibling(); // ensure on top
+
+            var image = go.AddComponent<UnityEngine.UI.Image>();
+            image.sprite = effectSprite;
+            image.raycastTarget = false;
+            image.SetNativeSize();
+
+            // Convert world to screen to canvas space
+            bool isOverlay = gameCanvas.renderMode == RenderMode.ScreenSpaceOverlay;
+            var cam = isOverlay ? null : (gameCanvas.worldCamera != null ? gameCanvas.worldCamera : Camera.main);
+            var referenceCam = cam == null ? Camera.main : cam;
+            Vector2 screenPos = RectTransformUtility.WorldToScreenPoint(referenceCam, worldPosition);
+
+            var canvasRect = _gameCanvas.GetComponent<RectTransform>();
+            var rt = image.rectTransform;
+            if (gameCanvas.renderMode == RenderMode.WorldSpace)
+            {
+                if (RectTransformUtility.ScreenPointToWorldPointInRectangle(canvasRect, screenPos, cam, out var worldPoint))
+                {
+                    rt.position = worldPoint;
+                }
+            }
+            else
+            {
+                if (RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRect, screenPos, cam, out var localPoint))
+                {
+                    rt.anchoredPosition = localPoint;
+                }
+            }
+
+            var fade = go.AddComponent<UIAutoFadeAndDestroy>();
+            fade.Duration = 0.2f;
+            fade.ScaleFrom = 0.75f;
+            fade.ScaleTo = 1.25f;
         }
 
         private void OnDestroy()

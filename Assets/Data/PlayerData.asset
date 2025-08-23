@@ -15,3 +15,4 @@ MonoBehaviour:
   MaxHealth: 3
   Damage: 1
   HitSound: {fileID: 8300000, guid: 90c5828689e7d4549818fa3ecbf2d0b7, type: 3}
+  HitEffect: {fileID: 21300000, guid: cbfaf41df3ce96b43b8b442b29b4a663, type: 3}

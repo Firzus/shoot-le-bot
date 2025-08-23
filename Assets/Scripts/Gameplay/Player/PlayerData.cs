@@ -8,5 +8,6 @@ namespace Project
         public int MaxHealth = 3;
         public int Damage = 1;
         public AudioClip HitSound;
+        public Sprite HitEffect;
     }
 }
